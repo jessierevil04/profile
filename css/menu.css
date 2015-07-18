@@ -1,0 +1,93 @@
+.menu {
+	background: #303e49;
+	position: fixed;	
+	text-align: center;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.menu a {
+	display: inline-block;
+	color: #fff;
+	font-size: 1.1em;
+	font-weight: 300;
+	text-decoration: none;
+	font-family: "Open Sans", sans-serif;
+}
+
+.menu h3 {
+	color: #FFF;
+}
+
+.menu a:hover {
+	background: rgba(26, 35, 43, 0.44);
+}
+
+.menu a:active {
+	background: #666;
+	color: #47a3da;
+}
+
+.menu-vertical {
+	width: 240px;
+	top: 0;
+	z-index: 1000;
+}
+
+.menu-vertical a {
+	border-bottom: 5px solid rgba(26, 35, 43, 0.44);
+	padding: 1em;
+}
+
+.menu-left {
+	width: 100%;
+}
+
+.push-body {
+	overflow-x: hidden;
+	position: relative;
+	left: 0;
+}
+
+.menu,
+.push-body {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 55.1875em){
+
+	.menu {
+		text-align: left;		
+		opacity: 1 !important;
+	}
+
+	.menu a {
+		display: block;
+		color: #fff;
+		font-size: 1.1em;
+		font-weight: 300;		
+		border-bottom: 1px solid rgba(26, 35, 43, 0.44);
+	}
+	
+	.menu h3 {
+		display: none;
+	}
+
+	.menu-left {
+		left: -240px;	
+		width: 240px;	
+		height: 100%;
+	}
+
+	.menu-left.menu-open {
+		left: 0px;
+	}
+		
+	.menu-push-right {
+		left: 240px !important;
+	}
+
+}
+
