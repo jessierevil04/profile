@@ -32,6 +32,8 @@ html, body {
 	font-size:			6vw;
 	color:				#FFF;
 	display: 			block;
+	background-image:	url('../img/bg.jpg');
+	background-size:	cover;
 }
 
 .header:before {
@@ -57,10 +59,10 @@ html, body {
 	border-style: 		solid;
 	padding:			2vw;
 	border-width: 		1vw;
-	border-color:		#F9F9F9;
+	border-color:		rgba(249, 249, 249, 0.3);
 	text-align: 		center;	
 	font-size: 			9vw;
-	color:				#FFF;
+	color:				#d1d9da;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
