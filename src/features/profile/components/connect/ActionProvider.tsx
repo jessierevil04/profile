@@ -26,10 +26,16 @@ type Props = {
   children: React.DetailedReactHTMLElement<any, HTMLElement>;
 };
 
+// Appends `message` to the chatbot message list.
+// `prevIndex` is a negative index into the current messages array used to
+// locate the most-recently-rendered widget and clear it if widgetHistory is
+// not set. -2 is used for bot messages (the last message is the widget
+// wrapper, so the real previous message is at -2); -1 is used for user
+// (client) messages where no extra wrapper exists.
 const updateMessages = (setState: any, message: any, prevIndex: number) => {
   setState((prev: any) => {
-    let messages = prev.messages;
-    let prevMessage = messages.at(prevIndex);
+    const messages = prev.messages;
+    const prevMessage = messages.at(prevIndex);
 
     if (prevMessage.widget && !prevMessage.widgetHistory) {
       prevMessage.widget = null;
@@ -54,21 +60,22 @@ const ActionProvider: React.FC<Props> = ({
   };
 
   const handleOpenAIChatResponse = (context: Context) => {
-    handleInput(context); 
-    dispatch(addMessage({role: "assistant", content: context.answer}));
+    handleInput(context);
+    // Record the assistant turn in Redux so the full conversation history can
+    // be sent back to the API on the next user message
+    dispatch(addMessage({ role: "assistant", content: context.answer }));
   };
 
   const handleOpenAIImageResponse = (context: Context) => {
-
     if (context.card) {
       dispatch(setCardState(context.card));
     }
-
-    handleInput(context); 
+    handleInput(context);
   };
 
   const handleInput = (context: Context) => {
     const botMessage = createChatBotMessage(context.answer, context.options);
+    // -2: skip past the widget wrapper that follows the previous bot message
     updateMessages(setState, botMessage, -2);
   };
 
@@ -79,11 +86,11 @@ const ActionProvider: React.FC<Props> = ({
       dispatch(setCardState(context.card));
     }
 
+    // -1: user messages have no trailing widget, so the previous message is at -1
     updateMessages(setState, clientMessage, -1);
     handleInput(context);
   };
 
-  // Put the handleHello function in the actions object to pass to the MessageParser
   return (
     <div>
       {React.Children.map(children, (child) => {
@@ -93,7 +100,7 @@ const ActionProvider: React.FC<Props> = ({
             handleSelection,
             handleGPTTokenSetting,
             handleOpenAIChatResponse,
-            handleOpenAIImageResponse
+            handleOpenAIImageResponse,
           },
         });
       })}

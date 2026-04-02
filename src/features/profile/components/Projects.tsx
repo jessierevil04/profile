@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -23,53 +23,52 @@ type Props = {
   details: Details;
 };
 
+const STAGGER_MS = 100; // Delay between successive Zoom animations
+
 const Projects: React.FC<Props> = ({ details }) => {
-  let contents: React.JSX.Element[] = [];  
-  let count = 0;
-  
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     setDisplay(true);
   }, []);
 
-  details.contents.forEach((project, index) => {
-    let delay = 100 * count++;
-    contents.push(
-      <Zoom
-        className="zoomItem"
-        in={display}
-        style={{ transitionDelay: display ? `${delay}ms` : "0ms" }}
-        key={index}
-      >
-        <Grid size={{ xs: 12, sm: 12, md: 4 }}>
-          <Card
-            sx={{ maxWidth: 345 }}
-            onClick={() => {
-              window.open(project.url, "_blank");
-            }}
-          >
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={project.img}
-                alt={project.name}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {project.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {project.description}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-      </Zoom>
-    );
-  });
+  // Build project cards only when data or display state changes
+  const contents = useMemo(
+    () =>
+      details.contents.map((project, index) => (
+        <Zoom
+          className="zoomItem"
+          in={display}
+          style={{ transitionDelay: display ? `${index * STAGGER_MS}ms` : "0ms" }}
+          key={index}
+        >
+          <Grid size={{ xs: 12, sm: 12, md: 4 }}>
+            <Card
+              sx={{ maxWidth: 345 }}
+              onClick={() => window.open(project.url, "_blank")}
+            >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={project.img}
+                  alt={project.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {project.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {project.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Zoom>
+      )),
+    [details.contents, display]
+  );
 
   return (
     <div id="projectMainContent">

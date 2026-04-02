@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import AppBar from "./AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -17,21 +18,22 @@ const NavBarComponent: React.FC = () => {
   const isDraweropen = useAppSelector(selectIsDrawerOpen);
   const dispatch = useAppDispatch();
 
-  const handleDrawerOpen = () => {
+  const handleDrawerOpen = useCallback(() => {
     dispatch(setIsDrawerOpen(true));
-  };
+  }, [dispatch]);
 
-  const typeWriterInit = (typewriter: TypewriterClass) => {
+  // Chains all configured title strings into a looping typewriter sequence.
+  // Each string is typed, paused for 1s, then fully deleted before the next.
+  // config.title is static module data so no deps are needed.
+  const typeWriterInit = useCallback((typewriter: TypewriterClass) => {
     config.title.forEach((title) => {
-      let deleteChar = title.text.length;
-
       typewriter = typewriter
         .typeString(title.text)
         .pauseFor(1000)
-        .deleteChars(deleteChar);
+        .deleteChars(title.text.length);
     });
     typewriter.start();
-  };
+  }, []);
 
   return (
     <AppBar position="fixed" open={isDraweropen}>

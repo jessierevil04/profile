@@ -1,12 +1,10 @@
 import { configureStore, ThunkAction, UnknownAction } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import profileReducer from '../features/profile/profileSlice';
 import connectReducer from '../features/profile/components/connect/connectSlice';
 import openAIReducer from '../features/openai/openAISlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     profile: profileReducer,
     connect: connectReducer,
     openAI: openAIReducer,

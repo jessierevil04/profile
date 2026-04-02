@@ -1,7 +1,6 @@
 import { Chip, Zoom, Divider, Grid, Paper } from "@mui/material";
-
 import { styled } from "@mui/material/styles";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import "../styles/skills.css";
 
 interface Content {
@@ -27,66 +26,70 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const STAGGER_MS = 50; // Delay between successive Zoom animations
+
 const Skills: React.FC<Props> = ({ details }) => {
-  let certifications: React.JSX.Element[] = [];
-  let technologies: React.JSX.Element[] = [];
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     setDisplay(true);
   }, []);
 
-  let sortedTech = details.technologies.sort((a, b) =>
-    a.title.localeCompare(b.title)
+  // Sort a copy so the prop array is never mutated
+  const sortedTech = useMemo(
+    () => [...details.technologies].sort((a, b) => a.title.localeCompare(b.title)),
+    [details.technologies]
   );
 
-  let count = 0;
+  // Build chip lists only when data or display state changes.
+  // Technologies continue the stagger counter from where certifications left off.
+  const certifications = useMemo(
+    () =>
+      details.certifications.map((content, index) => (
+        <Zoom
+          className="zoomItem"
+          in={display}
+          style={{ transitionDelay: display ? `${index * STAGGER_MS}ms` : "0ms" }}
+          key={index}
+        >
+          <div>
+            <Chip
+              label={content.title}
+              variant="outlined"
+              className="skillItem"
+              onClick={() => window.open(content.link, "_blank")}
+            />
+          </div>
+        </Zoom>
+      )),
+    [details.certifications, display]
+  );
 
-  details.certifications.forEach((content, index) => {
-    let delay = 50 * count++;
-    certifications.push(
-      <Zoom
-        className="zoomItem"
-        in={display}
-        style={{ transitionDelay: display ? `${delay}ms` : "0ms" }}
-        key={index}
-      >
-        <div>
-          <Chip
-            label={content.title}
-            variant="outlined"
-            className="skillItem"
-            onClick={() => {
-              window.open(content.link, "_blank");
-            }}
-          />
-        </div>
-      </Zoom>
-    );
-  });
-
-  sortedTech.forEach((content, index) => {
-    let delay = 50 * count++;
-    technologies.push(
-      <Zoom
-        className="zoomItem"
-        in={display}
-        style={{ transitionDelay: display ? `${delay}ms` : "0ms" }}
-        key={index}
-      >
-        <div>
-          <Chip
-            label={content.title}
-            variant="outlined"
-            className="skillItem"
-            onClick={() => {
-              window.open(content.link, "_blank");
-            }}
-          />
-        </div>
-      </Zoom>
-    );
-  });
+  const technologies = useMemo(
+    () =>
+      sortedTech.map((content, index) => (
+        <Zoom
+          className="zoomItem"
+          in={display}
+          style={{
+            transitionDelay: display
+              ? `${(details.certifications.length + index) * STAGGER_MS}ms`
+              : "0ms",
+          }}
+          key={index}
+        >
+          <div>
+            <Chip
+              label={content.title}
+              variant="outlined"
+              className="skillItem"
+              onClick={() => window.open(content.link, "_blank")}
+            />
+          </div>
+        </Zoom>
+      )),
+    [sortedTech, display, details.certifications.length]
+  );
 
   return (
     <div id="skillsMainContent">

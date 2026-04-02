@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Chip, Zoom } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 
 import "../styles/onlineCert.css";
 import PDFViewerDialog from "../../../components/common/PDFViewerDialog";
@@ -55,6 +55,8 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
+const STAGGER_MS = 50;
+
 const OnlineCertifications: React.FC<Props> = ({ details }) => {
   const [value, setValue] = useState(0);
   const [display, setDisplay] = useState(false);
@@ -67,66 +69,61 @@ const OnlineCertifications: React.FC<Props> = ({ details }) => {
     setPDFOpen(false);
   }, []);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = useCallback((_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
-  };
+  }, []);
 
-  const handleCertClick = (title: string, link: string, type?: string) => {
-    
-    if (type && type === "pdf") {
+  const handleCertClick = useCallback((title: string, link: string, type?: string) => {
+    if (type === "pdf") {
       setPDFOpen(true);
       setPDFTitle(title);
       setPDF(link);
       return;
     }
-
     setPDFOpen(false);
     window.open(link, "_blank");
-  };
+  }, []);
 
-  const handlePDFClose = () => {
+  const handlePDFClose = useCallback(() => {
     setPDFOpen(false);
-  };
+  }, []);
 
-  let certifications: React.JSX.Element[] = [];
-  let sources: React.JSX.Element[] = [];
+  // Build tab headers and their content panels together.
+  // Re-runs when sources data, display state, active tab, or cert click handler changes.
+  const { sources, certifications } = useMemo(() => {
+    const sources: React.JSX.Element[] = [];
+    const certifications: React.JSX.Element[] = [];
 
-  details.sources.forEach((source, index) => {
-    sources.push(<Tab label={source.title} key={index} />);
-    let count = 0;
-    let content: React.JSX.Element[] = [];
+    details.sources.forEach((source, sourceIndex) => {
+      sources.push(<Tab label={source.title} key={sourceIndex} />);
 
-    source.certificates.forEach((cert, index) => {
-      let delay = 50 * count++;
-
-      content.push(
+      const content = source.certificates.map((cert, certIndex) => (
         <Zoom
           className="zoomItem"
           in={display}
-          style={{ transitionDelay: display ? `${delay}ms` : "0ms" }}
-          key={index}
+          style={{ transitionDelay: display ? `${certIndex * STAGGER_MS}ms` : "0ms" }}
+          key={certIndex}
         >
           <div>
             <Chip
               label={cert.title}
               variant="outlined"
               className="certItem"
-              key={index}
-              onClick={() => {
-                handleCertClick(cert.title, cert.link, cert.type);
-              }}
+              onClick={() => handleCertClick(cert.title, cert.link, cert.type)}
             />
           </div>
         </Zoom>
+      ));
+
+      certifications.push(
+        <TabPanel value={value} index={sourceIndex} key={sourceIndex}>
+          {content}
+        </TabPanel>
       );
     });
 
-    certifications.push(
-      <TabPanel value={value} index={index} key={index}>
-        {content}
-      </TabPanel>
-    );
-  });
+    return { sources, certifications };
+  }, [details.sources, display, handleCertClick, value]);
 
   return (
     <div id="onlineCertMainContent">

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Typography } from "@mui/material";
 import "../styles/about.css";
 
@@ -16,16 +17,29 @@ type Props = {
 };
 
 const About: React.FC<Props> = ({ details }) => {
-  let contents: React.JSX.Element[] = [];
-  let counter = 0;
+  // Flatten nested content sections into a single element list.
+  // Memoized so it only rebuilds when the data prop changes.
+  const contents = useMemo(() => {
+    const elements: React.JSX.Element[] = [];
+    let counter = 0;
 
-  details.content.forEach((desc) => {
-    contents.push(<Typography variant="h6" className="title" key={++counter}>{desc.title}</Typography>);
-
-    desc.content.forEach((text) => {
-      contents.push(<Typography variant="subtitle1" className="content" key={++counter}>{text}</Typography>);
+    details.content.forEach((desc) => {
+      elements.push(
+        <Typography variant="h6" className="title" key={++counter}>
+          {desc.title}
+        </Typography>
+      );
+      desc.content.forEach((text) => {
+        elements.push(
+          <Typography variant="subtitle1" className="content" key={++counter}>
+            {text}
+          </Typography>
+        );
+      });
     });
-  });
+
+    return elements;
+  }, [details.content]);
 
   return (
     <div id="aboutMainContent">

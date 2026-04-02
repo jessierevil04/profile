@@ -14,27 +14,27 @@ const Cards: React.FC = () => {
   const [card, setCard] = useState(initialState);
 
   const scrollingBottom = () => {
-    const e = chatbotEndRef;
-
-    e.current?.scrollIntoView({
+    chatbotEndRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "center",
       inline: "start",
     });
   };
 
+  // Sync local card state whenever Redux dispatches a new card (e.g. DALL·E result)
   useEffect(() => {
     setCard(cardState);
-  }, []);
+  }, [cardState]);
 
+  // Scroll the chat window down whenever the displayed card changes
   useEffect(() => {
     scrollingBottom();
-  });
+  }, [card]);
 
-  let content : string | React.ReactElement = card.content;
+  let content: string | React.ReactElement = card.content;
 
   if (ContentType.IMAGE === card.contentType) {
-    content = <img src={card.content} className="imgCard"/>;
+    content = <img src={card.content} className="imgCard" alt={card.header} />;
   }
 
   return (
@@ -53,9 +53,7 @@ const Cards: React.FC = () => {
       <CardActions>
         <Button
           size="small"
-          onClick={() => {
-            window.open(card.link, "_blank");
-          }}
+          onClick={() => window.open(card.link, "_blank")}
         >
           Open
         </Button>

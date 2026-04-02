@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, createRef } from "react";
 import Chatbot from "react-chatbot-kit";
 import ActionProvider from "./ActionProvider";
 import MessageParser from "./MessageParser";
@@ -6,7 +6,6 @@ import Options from "./widgets/Options";
 import Avatar from "@mui/material/Avatar";
 import CardWidget from "./widgets/Card";
 import StyledBadge from "../../../../components/common/StyledBadge";
-import { useRef } from "react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import { clear } from "../../../openai/openAISlice";
 import { useAppDispatch } from "../../../../app/hooks";
@@ -28,15 +27,18 @@ type Props = {
   details: Details;
 };
 
-export let chatbotEndRef: any;
+// Module-level ref used by the Card widget to scroll the chat to the bottom
+// after a response is rendered. Created once at module load so it remains
+// stable across re-renders.
+export const chatbotEndRef = createRef<HTMLDivElement>();
 
 const Connect: React.FC<Props> = ({ details }) => {
-  chatbotEndRef = useRef(null);
   const dispatch = useAppDispatch();
 
+  // Clear OpenAI state whenever the chatbot section is mounted
   useEffect(() => {
     dispatch(clear());
-  }, []);
+  }, [dispatch]);
 
   const config = {
     initialMessages: [
@@ -54,6 +56,8 @@ const Connect: React.FC<Props> = ({ details }) => {
         </StyledBadge>
       ),
     },
+    // Widget registry: each entry maps a widget name (used in bot messages) to
+    // its render function and optional list of options to display below it.
     widgets: [
       {
         widgetName: "options",
@@ -75,6 +79,7 @@ const Connect: React.FC<Props> = ({ details }) => {
         mapStateToProps: [],
       },
       {
+        // Shown after an OpenAI image generation response
         widgetName: "openAIWidget",
         widgetFunc: (props: any) => (
           <>
@@ -86,6 +91,7 @@ const Connect: React.FC<Props> = ({ details }) => {
         mapStateToProps: [],
       },
       {
+        // Shown after an OpenAI chat response
         widgetName: "openai",
         widgetFunc: (props: any) => (
           <>
@@ -108,6 +114,7 @@ const Connect: React.FC<Props> = ({ details }) => {
         messageParser={MessageParser}
         actionProvider={ActionProvider}
       />
+      {/* Invisible sentinel element scrolled into view after each bot response */}
       <div ref={chatbotEndRef} />
     </div>
   );
