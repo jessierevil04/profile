@@ -24,7 +24,7 @@ type Props = {
 };
 
 const Projects: React.FC<Props> = ({ details }) => {
-  let contents: JSX.Element[] = [];  
+  let contents: React.JSX.Element[] = [];  
   let count = 0;
   
   const [display, setDisplay] = useState(false);
@@ -42,7 +42,7 @@ const Projects: React.FC<Props> = ({ details }) => {
         style={{ transitionDelay: display ? `${delay}ms` : "0ms" }}
         key={index}
       >
-        <Grid item xs={12} sm={12} md={4}>
+        <Grid size={{ xs: 12, sm: 12, md: 4 }}>
           <Card
             sx={{ maxWidth: 345 }}
             onClick={() => {

@@ -1,7 +1,8 @@
-import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from "openai";
+import OpenAI from "openai";
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 
 export const postOpenAIChatCompletions = async (
-  messages: ChatCompletionRequestMessage[],
+  messages: ChatCompletionMessageParam[],
   apiKey: string,
   callback: (data: any) => void,
   errorCallback: (data: any) => void
@@ -9,7 +10,7 @@ export const postOpenAIChatCompletions = async (
   const openai = getOpenAI(apiKey);
 
   try {
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: messages,
     });
@@ -26,12 +27,12 @@ export const postOpenAIImageGeneration = async (
   errorCallback: (data: any) => void
 ) => {
   const openai = getOpenAI(apiKey);
-  
+
   try {
-    const image = await openai.createImage({
+    const image = await openai.images.generate({
       prompt: prompt,
       n: 1,
-      size: "512x512"
+      size: "512x512",
     });
     callback(image);
   } catch (error) {
@@ -39,9 +40,9 @@ export const postOpenAIImageGeneration = async (
   }
 };
 
-const getOpenAI = (apiKey: string): OpenAIApi => {
-  const configuration = new Configuration({
+const getOpenAI = (apiKey: string): OpenAI => {
+  return new OpenAI({
     apiKey: apiKey,
+    dangerouslyAllowBrowser: true,
   });
-  return new OpenAIApi(configuration);
 };

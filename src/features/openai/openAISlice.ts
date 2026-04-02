@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { ChatCompletionRequestMessage } from "openai";
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 
 export enum OpenAIType {
   CHAT,
@@ -11,7 +11,7 @@ export interface OpenAIState {
   isEnabled: boolean;
   apiKey?: string;
   type?: OpenAIType;
-  messages: ChatCompletionRequestMessage[];
+  messages: ChatCompletionMessageParam[];
 }
 
 const initialState: OpenAIState = {
@@ -35,10 +35,10 @@ export const openAISlice = createSlice({
       state.type = undefined;
       state.apiKey = '';
     },
-    setMessage: (state, action: PayloadAction<ChatCompletionRequestMessage[]>) => {
+    setMessage: (state, action: PayloadAction<ChatCompletionMessageParam[]>) => {
       state.messages = action.payload;
     },
-    addMessage: (state, action: PayloadAction<ChatCompletionRequestMessage>) => {
+    addMessage: (state, action: PayloadAction<ChatCompletionMessageParam>) => {
       state.messages = [...state.messages, action.payload];
     },
     setType: (state, action: PayloadAction<OpenAIType>) => {

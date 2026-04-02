@@ -3,7 +3,7 @@ import { parser } from "../MessageParser";
 import { parseOpenAI } from "../../../../openai/openAIParser";
 import Button from "@mui/material/Button";
 
-import { ChatCompletionRequestMessage } from "openai";
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 import { connect } from "../../../../../data/config";
 import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
 import {
@@ -58,7 +58,7 @@ const Options: React.FC<Props> = ({ options, props }) => {
         apiKey: apiKey,
         openAIType: openAIType,
         setAPIKey: (apiKey: string) => dispatch(setAPIKey(apiKey)),
-        setMessage: (messages: ChatCompletionRequestMessage[]) =>
+        setMessage: (messages: ChatCompletionMessageParam[]) =>
           dispatch(setMessage(messages)),
       });
       return;

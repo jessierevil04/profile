@@ -52,7 +52,9 @@ const Home: React.FC = () => {
         <span onMouseEnter={enterTitle} onMouseLeave={leaveTitle}>
           {title.map((letter, index) => {
             return (
-              <BouncyText key={index}>{letter === " " ? "\u00A0" : letter}</BouncyText>
+              <BouncyText key={index}>
+                {letter === " " ? "\u00A0" : letter}
+              </BouncyText>
             );
           })}
         </span>

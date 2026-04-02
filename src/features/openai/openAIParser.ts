@@ -2,7 +2,7 @@ import {
   postOpenAIChatCompletions,
   postOpenAIImageGeneration,
 } from "../api/api";
-import { ChatCompletionRequestMessage } from "openai";
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 import { OpenAIType } from "./openAISlice";
 import { connect } from "../../data/config";
 import { ContentType } from "../profile/components/connect/connectSlice";
@@ -10,7 +10,7 @@ import { ContentType } from "../profile/components/connect/connectSlice";
 export interface OpenAIContainer {
   actions: any;
   message: string;
-  messages?: ChatCompletionRequestMessage[];
+  messages?: ChatCompletionMessageParam[];
   apiKey?: string;
   openAIType?: OpenAIType;
   setAPIKey: Function;
@@ -47,7 +47,7 @@ const openAIKeySetting = (
 const parseOpenAIChat = (openAI: OpenAIContainer) => {
   if (!openAI.messages || !openAI.apiKey) return;
 
-  const messages: ChatCompletionRequestMessage[] = [
+  const messages: ChatCompletionMessageParam[] = [
     ...openAI.messages,
     {
       role: "user",
@@ -75,7 +75,7 @@ const parseOpenAIImage = (openAI: OpenAIContainer) => {
 };
 
 const openAIChatParser = async (
-  messages: ChatCompletionRequestMessage[],
+  messages: ChatCompletionMessageParam[],
   apiKey: string,
   callback: Function
 ) => {
@@ -83,7 +83,7 @@ const openAIChatParser = async (
     const context = {
       text: "response",
       keywords: [],
-      answer: data.data.choices[0].message.content,
+      answer: data.choices[0].message.content,
       options: { widget: "openai" },
     };
 
@@ -98,11 +98,8 @@ const openAIChatParser = async (
       answer: "",
     };
 
-    if (error.response) {
-      context.answer =
-        error.response.data.error.code +
-        ": " +
-        error.response.data.error.message;
+    if (error.status) {
+      context.answer = error.status + ": " + error.message;
     } else {
       context.answer = error.message;
     }
@@ -119,7 +116,6 @@ export const openAIImageParser = async (
   callback: Function
 ) => {
   const responseCallback = (data: any) => {
-
     const context = {
       text: "response",
       keywords: [],
@@ -127,10 +123,10 @@ export const openAIImageParser = async (
       options: { widget: "openAIWidget", widgetHistory: true },
       card: {
         header: "DALL·E",
-        content: data.data.data[0].url,
+        content: data.data[0].url,
         contentType: ContentType.IMAGE,
         subcontent: prompt,
-        link: data.data.data[0].url,
+        link: data.data[0].url,
       },
     };
 
@@ -145,11 +141,8 @@ export const openAIImageParser = async (
       answer: "",
     };
 
-    if (error.response) {
-      context.answer =
-        error.response.data.error.code +
-        ": " +
-        error.response.data.error.message;
+    if (error.status) {
+      context.answer = error.status + ": " + error.message;
     } else {
       context.answer = error.message;
     }

@@ -16,7 +16,7 @@ type Props = {
 };
 
 const About: React.FC<Props> = ({ details }) => {
-  let contents: JSX.Element[] = [];
+  let contents: React.JSX.Element[] = [];
   let counter = 0;
 
   details.content.forEach((desc) => {

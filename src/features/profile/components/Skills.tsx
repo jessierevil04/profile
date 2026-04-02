@@ -28,8 +28,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Skills: React.FC<Props> = ({ details }) => {
-  let certifications: JSX.Element[] = [];
-  let technologies: JSX.Element[] = [];
+  let certifications: React.JSX.Element[] = [];
+  let technologies: React.JSX.Element[] = [];
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const Skills: React.FC<Props> = ({ details }) => {
       </div>
 
       <Grid container columns={2}>
-        <Grid xs={2} sm={1} md={1}>
+        <Grid size={{ xs: 2, sm: 1, md: 1 }}>
           <Item className="skillsContainer">
             <Divider id="dividerCert">
               <Chip label="Certifications" />
@@ -103,7 +103,7 @@ const Skills: React.FC<Props> = ({ details }) => {
             {certifications}
           </Item>
         </Grid>
-        <Grid xs={2} sm={1} md={1}>
+        <Grid size={{ xs: 2, sm: 1, md: 1 }}>
           <Item className="skillsContainer">
             <Divider id="dividerTech">
               <Chip label="Technologies" />

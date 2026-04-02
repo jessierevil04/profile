@@ -1,4 +1,4 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, UnknownAction } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import profileReducer from '../features/profile/profileSlice';
 import connectReducer from '../features/profile/components/connect/connectSlice';
@@ -19,5 +19,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
-  Action<string>
+  UnknownAction
 >;

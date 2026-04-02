@@ -2,7 +2,7 @@
 import React from "react";
 import { connect } from "../../../../data/config";
 import { useAppSelector, useAppDispatch } from "../../../../app/hooks";
-import { ChatCompletionRequestMessage } from "openai";
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 import { parseOpenAI } from "../../../openai/openAIParser";
 import {
   selectIsOpenAIEnabled,
@@ -73,7 +73,7 @@ const MessageParser: React.FC<Props> = ({ actions, children }) => {
         apiKey: apiKey,
         openAIType: openAIType,
         setAPIKey: (apiKey: string) => dispatch(setAPIKey(apiKey)),
-        setMessage: (messages: ChatCompletionRequestMessage[]) =>
+        setMessage: (messages: ChatCompletionMessageParam[]) =>
           dispatch(setMessage(messages)),
       });
       return;

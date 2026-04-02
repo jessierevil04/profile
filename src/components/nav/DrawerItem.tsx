@@ -9,7 +9,7 @@ import "../../styles/drawerItem.css";
 type Props = {
   text: string;
   path?: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   onClick: Function;
 };
 

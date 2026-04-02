@@ -24,7 +24,7 @@ type Props = {
 };
 
 const Experiences: React.FC<Props> = ({ details }) => {
-  let contents: JSX.Element[] = [];
+  let contents: React.JSX.Element[] = [];
 
   details.contents.forEach((record, index) => {
     contents.push(

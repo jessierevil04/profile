@@ -88,13 +88,13 @@ const OnlineCertifications: React.FC<Props> = ({ details }) => {
     setPDFOpen(false);
   };
 
-  let certifications: JSX.Element[] = [];
-  let sources: JSX.Element[] = [];
+  let certifications: React.JSX.Element[] = [];
+  let sources: React.JSX.Element[] = [];
 
   details.sources.forEach((source, index) => {
     sources.push(<Tab label={source.title} key={index} />);
     let count = 0;
-    let content: JSX.Element[] = [];
+    let content: React.JSX.Element[] = [];
 
     source.certificates.forEach((cert, index) => {
       let delay = 50 * count++;

@@ -1,12 +1,13 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 import "../../styles/pdfViewerDialog.css";
 
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
-pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export interface Props {
   open: boolean;
@@ -16,15 +17,15 @@ export interface Props {
 }
 
 const PDFViewerDialog: React.FC<Props> = ({ open, title, pdf, onClose }) => {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [, setNumPages] = useState<number | null>(null);
+  const [pageNumber] = useState(1);
 
   const handleClose = () => {
     onClose();
   };
 
-  const onDocumentLoadSuccess = (num: any) => {
-    setNumPages(num);
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
   };
 
   return (
