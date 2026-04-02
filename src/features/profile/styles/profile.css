@@ -24,10 +24,10 @@
   --color-message:        #1e293b;
   --color-message-button: #e2e8f0;
   --color-message-text:   #e2e8f0;
-  --color-blend:          #818cf8;
+  --color-blend:          #818cf8; /* darken blend: lighter than bg → invisible on bg, darker than text → visible on text */
   --color-paper:          #1e293b;
   --color-surface:        #253047;
-  --blend-mode: difference;
+  --blend-mode: darken;
 }
 
 /* ─── Layout ──────────────────────────────────────────────────────────────── */

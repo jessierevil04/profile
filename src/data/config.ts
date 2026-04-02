@@ -58,6 +58,12 @@ export const config = {
 
 export const home = {
   title: "Hi! I'm Jessie",
+  subtitles: [
+    "Senior Fullstack Developer",
+    "Java Developer",
+    "React Developer",
+    "Oracle Certified Professional",
+  ],
 };
 
 export const experiences = {

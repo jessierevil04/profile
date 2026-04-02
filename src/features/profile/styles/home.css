@@ -6,9 +6,9 @@
 
 #home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Use dvh so height is relative to the visible viewport, not a parent container */
   height: calc(100dvh - 64px);
 }
 
@@ -19,11 +19,56 @@
   text-align: center;
   font-weight: 700;
   letter-spacing: -0.03em;
-  padding: 20px 0;
+  padding: 20px 0 8px;
 }
 
 #home #title span > span {
   display: inline-block;
+}
+
+#home #subtitle {
+  color: var(--color-secondary);
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.6;
+  min-height: 2em; /* prevents layout shift while cursor blinks between words */
+}
+
+#home #subtitle .Typewriter__cursor {
+  color: var(--color-hover);
+}
+
+#home #cta {
+  margin-top: 36px;
+}
+
+#home .ctaButton {
+  border: 1.5px solid var(--color-hover) !important;
+  color: var(--color-hover) !important;
+  border-radius: 999px !important;
+  padding: 10px 32px !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+}
+
+#home .ctaButton:hover {
+  background-color: var(--color-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35) !important;
+}
+
+#home .ctaButton:active {
+  background-color: var(--color-active) !important;
+  border-color: var(--color-active) !important;
+  color: #ffffff !important;
+  transform: translateY(0);
+  transition: all 0s !important;
 }
 
 /* Small circular cursor that expands into a spotlight blend on title hover */

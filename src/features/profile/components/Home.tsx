@@ -1,5 +1,8 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Typewriter, { TypewriterClass } from "typewriter-effect";
 import { home } from "../../../data/config";
 import "../styles/home.css";
 import BouncyText from "../../../components/common/BouncyText";
@@ -7,16 +10,14 @@ import BouncyText from "../../../components/common/BouncyText";
 const Home: React.FC = () => {
   const [cursorVariant, setCursorVariant] = useState("default");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
     window.addEventListener("mousemove", mouseMove);
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
+    return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
 
   // Cursor blob follows the mouse. In "hover" state it expands and blends with
@@ -46,6 +47,17 @@ const Home: React.FC = () => {
   // Split once — home.title is static config data
   const title = useMemo(() => home.title.split(""), []);
 
+  // Cycle through each role: type → pause → delete → next
+  const typeWriterInit = useCallback((typewriter: TypewriterClass) => {
+    home.subtitles.forEach((role) => {
+      typewriter = typewriter
+        .typeString(role)
+        .pauseFor(1500)
+        .deleteChars(role.length);
+    });
+    typewriter.start();
+  }, []);
+
   return (
     <div id="home">
       <div id="title">
@@ -57,6 +69,24 @@ const Home: React.FC = () => {
           ))}
         </span>
       </div>
+
+      <div id="subtitle">
+        <Typewriter
+          onInit={typeWriterInit}
+          options={{ autoStart: true, loop: true, deleteSpeed: 2 }}
+        />
+      </div>
+
+      <div id="cta">
+        <Button
+          variant="outlined"
+          className="ctaButton"
+          onClick={() => navigate("/experiences")}
+        >
+          View my work
+        </Button>
+      </div>
+
       <motion.div
         className="cursor"
         variants={variants}
