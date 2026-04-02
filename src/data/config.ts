@@ -64,7 +64,16 @@ export const experiences = {
   title: "Experiences",
   contents: [
     {
-      date: "Dec 2018 - present",
+      date: "Jun 2024 - present",
+      icon: LaptopIcon,
+      title: "HSI - Skillko",
+      subtitle: "Senior Fullstack Developer",
+      link: "https://skillko.com/",
+      description:
+        "Responsible for maintaining and enhancing the Skillko workforce management platform.",
+    },
+    {
+      date: "Dec 2018 - Jun 2024",
       icon: LaptopIcon,
       title: "Hong Leong Bank",
       subtitle: "Java Developer",
