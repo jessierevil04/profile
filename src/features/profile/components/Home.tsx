@@ -70,6 +70,11 @@ const Home: React.FC = () => {
         </span>
       </div>
 
+      <div id="current-work">
+        <span className="pulse-dot" />
+        Currently building&nbsp;<strong>{home.currentlyWorkingOn}</strong>
+      </div>
+
       <div id="subtitle">
         <Typewriter
           onInit={typeWriterInit}
@@ -85,11 +90,6 @@ const Home: React.FC = () => {
         >
           View my work
         </Button>
-      </div>
-
-      <div id="current-work">
-        <span className="pulse-dot" />
-        Currently building&nbsp;<strong>{home.currentlyWorkingOn}</strong>
       </div>
 
       <motion.div

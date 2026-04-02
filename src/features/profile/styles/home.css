@@ -73,7 +73,7 @@
 
 /* Currently working on badge */
 #home #current-work {
-  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
