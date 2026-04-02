@@ -1,14 +1,29 @@
 div.drawerItem svg {
   fill: var(--color-secondary);
-  transition: fill 0.8s !important;
+  transition: fill 0.3s ease;
 }
 
 div.drawerItem:hover svg {
   fill: var(--color-hover);
-  transition: fill 0.8s !important;
+  transition: fill 0.3s ease;
 }
 
 div.drawerItem:active svg {
   fill: var(--color-active);
-  transition: fill 0s !important;
-}/*# sourceMappingURL=drawerItem.css.map */
+  transition: fill 0s;
+}
+
+/* Active route indicator */
+div.drawerItem.active svg {
+  fill: var(--color-hover);
+}
+
+div.drawerItem.active .navLabel span {
+  color: var(--color-hover);
+  font-weight: 600;
+}
+
+div.drawerItem.active {
+  border-right: 2px solid var(--color-hover);
+  background-color: rgba(99, 102, 241, 0.08);
+}

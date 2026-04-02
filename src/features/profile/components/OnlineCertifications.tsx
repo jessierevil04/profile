@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Chip, Zoom } from "@mui/material";
+import { Chip, Zoom, Skeleton } from "@mui/material";
 import { useEffect, useState, useMemo, useCallback } from "react";
 
 import "../styles/onlineCert.css";
@@ -115,9 +115,25 @@ const OnlineCertifications: React.FC<Props> = ({ details }) => {
         </Zoom>
       ));
 
+      // Show skeleton chips while the Zoom animations are not yet triggered
+      const SKELETON_WIDTHS = [100, 130, 90, 115, 95, 125];
+      const skeleton = !display && (
+        <Box sx={{ p: 3 }}>
+          {SKELETON_WIDTHS.map((w, i) => (
+            <Skeleton
+              key={i}
+              variant="rounded"
+              width={w}
+              height={32}
+              sx={{ display: "inline-block", m: "6px", borderRadius: "999px" }}
+            />
+          ))}
+        </Box>
+      );
+
       certifications.push(
         <TabPanel value={value} index={sourceIndex} key={sourceIndex}>
-          {content}
+          {display ? content : skeleton}
         </TabPanel>
       );
     });

@@ -46,21 +46,30 @@
 }
 
 #onlineCertMainContent > div.MuiBox-root > div.MuiBox-root {
-  border-color: var(--color-secondary);
-  opacity: 0.25;
+  /* Use rgba on the border itself — do NOT use opacity here, it fades the tabs too */
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
-#onlineCertMainContent .MuiButtonBase-root {
+#onlineCertMainContent .MuiTab-root {
   color: var(--color-secondary);
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
   text-transform: none;
-  transition: color 0.3s ease;
+  opacity: 0.7;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-#onlineCertMainContent .MuiButtonBase-root:hover {
+#onlineCertMainContent .MuiTab-root:hover {
   color: var(--color-hover);
+  opacity: 1;
+}
+
+#onlineCertMainContent .MuiTab-root.Mui-selected {
+  color: var(--color-hover);
+  font-weight: 600;
+  opacity: 1;
 }
 
 #onlineCertMainContent .MuiTabs-indicator {

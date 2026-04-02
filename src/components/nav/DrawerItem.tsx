@@ -11,15 +11,16 @@ type Props = {
   path?: string;
   icon: React.JSX.Element;
   onClick: Function;
+  isActive?: boolean;
 };
 
-const DrawerItem: React.FC<Props> = ({ text, icon, path, onClick }) => {
+const DrawerItem: React.FC<Props> = ({ text, icon, path, onClick, isActive }) => {
   const isDraweropen = useAppSelector(selectIsDrawerOpen);
 
   return (
     <ListItem disablePadding sx={{ display: "block" }}>
       <ListItemButton
-        className="drawerItem"
+        className={`drawerItem${isActive ? " active" : ""}`}
         onClick={() => onClick(path)}
         sx={{
           minHeight: 48,

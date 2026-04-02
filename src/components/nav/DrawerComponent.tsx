@@ -9,7 +9,7 @@ import Drawer from "./Drawer";
 import DrawerItem from "./DrawerItem";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { useTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { config } from "../../data/config";
 import {
   selectIsDrawerOpen,
@@ -25,18 +25,19 @@ const DrawerComponent: React.FC = () => {
   const isDraweropen = useAppSelector(selectIsDrawerOpen);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
 
   const handleDrawerClose = () => {
     dispatch(setIsDrawerOpen(false));
   };
 
-  const handleToggleTheme = (str:string) => {
+  const handleToggleTheme = () => {
     dispatch(toggleTheme());
-  }
+  };
 
-  const handleNavigate = (str:string) => {
-    navigate(str);
-  }
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <Drawer variant="permanent" open={isDraweropen} id="drawer">
@@ -51,13 +52,14 @@ const DrawerComponent: React.FC = () => {
       </DrawerHeader>
 
       <List>
-        {config.links.map((link, index) => (
+        {config.links.map((link) => (
           <DrawerItem
             key={link.text}
             text={link.text}
             icon={<link.icon />}
             path={link.path}
             onClick={handleNavigate}
+            isActive={link.path === pathname}
           />
         ))}
       </List>
@@ -65,7 +67,7 @@ const DrawerComponent: React.FC = () => {
       <List id="themeMode">
         <DrawerItem
           text={themeMode === 'light' ? 'Light Mode' : 'Dark Mode'}
-          icon={themeMode === 'light' ? <Brightness4Icon />: <Brightness7Icon />}
+          icon={themeMode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
           onClick={handleToggleTheme}
         />
       </List>

@@ -10,6 +10,8 @@ import Skills from "./components/Skills";
 import Connect from "./components/connect/Connect";
 import Projects from "./components/Projects";
 import OnlineCertifications from "./components/OnlineCertifications";
+import ScrollProgressBar from "../../components/common/ScrollProgressBar";
+import PageTransition from "../../components/common/PageTransition";
 import {
   connect,
   experiences,
@@ -44,25 +46,69 @@ export default function Profile() {
   return (
     <Box sx={{ display: "flex" }} id="main" className={theme}>
       <CssBaseline />
+      <ScrollProgressBar />
       <NavBarComponent />
       <DrawerComponent />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }} id="container">
         <DrawerHeader />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            }
+          />
           <Route
             path="/experiences"
-            element={<Experiences details={experiences} />}
+            element={
+              <PageTransition>
+                <Experiences details={experiences} />
+              </PageTransition>
+            }
           />
-          <Route path="/skills" element={<Skills details={skills} />} />
+          <Route
+            path="/skills"
+            element={
+              <PageTransition>
+                <Skills details={skills} />
+              </PageTransition>
+            }
+          />
           <Route
             path="/onlineCert"
-            element={<OnlineCertifications details={onlineCertifications} />}
+            element={
+              <PageTransition>
+                <OnlineCertifications details={onlineCertifications} />
+              </PageTransition>
+            }
           />
-          <Route path="/connect" element={<Connect details={connect} />} />
-          <Route path="/about" element={<About details={about} />} />
-          <Route path="/projects" element={<Projects details={projects} />} />
+          <Route
+            path="/connect"
+            element={
+              <PageTransition>
+                <Connect details={connect} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PageTransition>
+                <About details={about} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <PageTransition>
+                <Projects details={projects} />
+              </PageTransition>
+            }
+          />
         </Routes>
       </Box>
     </Box>
