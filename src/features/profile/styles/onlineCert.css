@@ -1,46 +1,82 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
 #onlineCertMainContent div.title span {
-  font-size: 7vw;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
+
 #onlineCertMainContent .zoomItem {
   display: inline-flex;
 }
+
 #onlineCertMainContent .certItem {
-  margin: 10px;
+  margin: 6px;
   color: var(--color-secondary);
   border-color: var(--color-secondary);
-  transition: 0.8s !important;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: all 0.3s ease !important;
 }
+
 #onlineCertMainContent .certItem:hover {
   border-color: var(--color-hover);
   background-color: var(--color-hover);
-  color: var(--color-primary);
-  transition: 0.8s !important;
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease !important;
 }
+
 #onlineCertMainContent .certItem:active {
   border-color: var(--color-active);
   background-color: var(--color-active);
-  color: var(--color-primary);
-  transition: 0s !important;
+  color: #ffffff;
+  transform: translateY(0);
+  transition: all 0s !important;
 }
+
 #onlineCertMainContent .certItem:visited {
-  margin: 10px;
+  margin: 6px;
   color: var(--color-secondary);
   border-color: var(--color-secondary);
-  transition: 0.8s !important;
 }
+
 #onlineCertMainContent > div.MuiBox-root > div.MuiBox-root {
   border-color: var(--color-secondary);
+  opacity: 0.25;
 }
+
 #onlineCertMainContent .MuiButtonBase-root {
   color: var(--color-secondary);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  transition: color 0.3s ease;
 }
+
+#onlineCertMainContent .MuiButtonBase-root:hover {
+  color: var(--color-hover);
+}
+
 #onlineCertMainContent .MuiTabs-indicator {
-  background-color: var(--color-secondary);
+  background-color: var(--color-hover);
+  height: 2.5px;
+  border-radius: 2px;
 }
+
 #onlineCertMainContent .MuiChip-root {
   margin: 5px;
 }
+
 #onlineCertMainContent p.MuiTypography-root {
   text-align: center;
-}/*# sourceMappingURL=onlineCert.css.map */
+  color: var(--color-secondary);
+  font-family: "Montserrat", sans-serif;
+  opacity: 0.8;
+  line-height: 1.6;
+}

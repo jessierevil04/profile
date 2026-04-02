@@ -1,13 +1,15 @@
-$light-primary1: #e9e9e9;
-$light-primary2: #fff;
-$light-secondary1: #020826;
-$light-secondary2: #44b700;
-$light-secondary3: #5eff00;
-$light-blend: #44b700;
+// ─── Light Theme ────────────────────────────────────────────────────────────
+$light-primary1:   #f8fafc;   // Slate-50  – clean near-white background
+$light-primary2:   #ffffff;   // Pure white – paper/card surfaces
+$light-secondary1: #0f172a;   // Slate-900 – deep navy text
+$light-secondary2: #6366f1;   // Indigo-500 – accent / hover
+$light-secondary3: #4f46e5;   // Indigo-600 – active state
+$light-blend:      #6366f1;
 
-$dark-primary1: #1d1d1d;
-$dark-primary2: #0a0a0a;
-$dark-secondary1: #c1c1c1;
-$dark-secondary2: #00d5e4;
-$dark-secondary3: #00eeff;
-$dark-blend: #c1c1c1;
+// ─── Dark Theme ─────────────────────────────────────────────────────────────
+$dark-primary1:   #0f172a;   // Slate-900 – deep dark background
+$dark-primary2:   #1e293b;   // Slate-800 – elevated surfaces / cards
+$dark-secondary1: #e2e8f0;   // Slate-200 – soft readable text
+$dark-secondary2: #818cf8;   // Indigo-400 – accent / hover (lighter for dark bg)
+$dark-secondary3: #6366f1;   // Indigo-500 – active state
+$dark-blend:      #818cf8;

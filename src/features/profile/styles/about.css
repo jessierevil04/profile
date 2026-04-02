@@ -1,10 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
-#aboutMainContent .title,
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+#aboutMainContent .title {
+  color: inherit;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 #aboutMainContent .content {
   color: inherit;
   font-family: "Montserrat", sans-serif;
   text-align: justify;
+  opacity: 0.85;
+  line-height: 1.75;
 }
+
 #aboutMainContent .title:not(:first-child) {
-  margin-top: 50px;
-}/*# sourceMappingURL=about.css.map */
+  margin-top: 48px;
+}

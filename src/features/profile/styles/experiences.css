@@ -1,71 +1,89 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
-@media only screen and (min-width: 1170px) {
-  div#timelineMainContent .vertical-timeline--two-columns .vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content .vertical-timeline-element-date {
-    left: 90%;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
 #timelineMainContent {
   color: var(--color-secondary);
   font-family: "Montserrat", sans-serif;
 }
+
 #timelineMainContent .vertical-timeline::before {
   background: var(--color-secondary);
+  opacity: 0.25;
+  width: 2px;
 }
+
+/* Timeline icon bubble */
 #timelineMainContent .vertical-timeline-element-icon {
   background: var(--color-secondary) !important;
   color: var(--color-primary) !important;
-  box-shadow: unset;
-  transition: 0.8s;
+  box-shadow: 0 0 0 3px var(--color-hover), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
+
 #timelineMainContent .vertical-timeline-element-icon > div {
   height: 100%;
 }
+
 #timelineMainContent .vertical-timeline-element-icon:hover,
 #timelineMainContent .vertical-timeline-element-icon:has(+ .vertical-timeline-element-content:hover) {
   background-color: var(--color-hover) !important;
-  color: var(--color-primary) !important;
-  transition: 0.8s;
+  box-shadow: 0 0 0 3px var(--color-hover), 0 8px 20px rgba(99, 102, 241, 0.3);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
+
+/* Content card */
+#timelineMainContent .vertical-timeline-element-content {
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  background: var(--color-paper) !important;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
 #timelineMainContent .vertical-timeline-element-icon:hover + .vertical-timeline-element-content,
 #timelineMainContent .vertical-timeline-element-content:hover {
-  border: 3px solid var(--color-hover);
-  box-shadow: 0 3px 0 var(--color-hover);
-  transition: 0.8s;
+  border-color: var(--color-hover);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
-#timelineMainContent .vertical-timeline-element-icon:hover + .vertical-timeline-element-content .vertical-timeline-element-content-arrow,
-#timelineMainContent .vertical-timeline-element-content:hover .vertical-timeline-element-content-arrow {
-  border-right-color: var(--color-hover);
-  transition: 0.8s;
+
+#timelineMainContent .vertical-timeline-element-content-arrow {
+  display: none;
 }
+
+#timelineMainContent .vertical-timeline-element-content .vertical-timeline-element-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-secondary);
+  transition: color 0.4s ease;
+}
+
 #timelineMainContent .vertical-timeline-element-icon:hover + .vertical-timeline-element-content .vertical-timeline-element-title,
 #timelineMainContent .vertical-timeline-element-content:hover .vertical-timeline-element-title {
   color: var(--color-hover);
-  transition: 0.8s;
 }
-#timelineMainContent .vertical-timeline-element-content {
-  border: 3px solid var(--color-secondary);
-  box-shadow: 0 3px 0 var(--color-secondary);
-  background: unset;
-  transition: 0.8s;
-}
-#timelineMainContent .vertical-timeline-element-content .vertical-timeline-element-title {
-  font-size: 2em;
-  transition: 0.8s;
-}
+
 #timelineMainContent .vertical-timeline-element-content .vertical-timeline-element-subtitle {
   color: var(--color-secondary);
   font-family: "Montserrat", sans-serif;
-  font-size: 1em;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: 4px;
 }
+
 #timelineMainContent .vertical-timeline-element-content p {
   color: var(--color-secondary);
   font-family: "Montserrat", sans-serif;
+  opacity: 0.85;
+  line-height: 1.6;
 }
+
 #timelineMainContent .vertical-timeline-element-content .vertical-timeline-element-date {
   color: var(--color-secondary);
   font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
-#timelineMainContent .vertical-timeline-element-content .vertical-timeline-element-content-arrow {
-  border-right-color: var(--color-secondary);
-  transition: 0.8s;
-}/*# sourceMappingURL=experiences.css.map */

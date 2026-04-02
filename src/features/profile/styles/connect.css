@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
 #chatbotMainContent {
   padding: 20px;
   height: 83vh;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 div.react-chatbot-kit-chat-container {
@@ -12,124 +13,179 @@ div.react-chatbot-kit-chat-container {
   width: 100%;
   padding-bottom: 150px;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container {
   height: auto;
   width: 100%;
   background-color: var(--color-primary);
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container {
   height: auto;
   overflow: hidden;
   padding: unset;
 }
+
+/* Bot message bubble */
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .react-chatbot-kit-chat-bot-message {
   background-color: var(--color-message);
   word-break: break-word;
   margin-left: unset;
   width: auto;
+  border-radius: 0 12px 12px 12px;
+  font-family: "Montserrat", sans-serif;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .react-chatbot-kit-chat-bot-message-arrow {
   border-right: 8px solid var(--color-message);
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiBadge-root {
   margin: 0px 10px;
   height: 40px;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiBadge-root > div {
   color: var(--color-secondary);
   background-color: unset;
   border: 2px solid var(--color-secondary);
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiBadge-root > span {
   background-color: var(--color-hover);
   color: var(--color-hover);
 }
+
+/* Project/info cards within chat */
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root {
-  border: 2px solid var(--color-secondary);
-  background-color: var(--color-primary);
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+  border-radius: 12px;
+  background-color: var(--color-paper);
   width: 300px;
   margin: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root:hover {
+  border-color: var(--color-hover);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+}
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .MuiCardContent-root p,
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .MuiCardContent-root div {
   color: var(--color-secondary);
   font-family: "Montserrat", sans-serif;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .MuiCardActions-root > button {
   color: var(--color-secondary);
+  font-family: "Montserrat", sans-serif;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .MuiCardActions-root > button:hover {
   background-color: var(--color-hover);
-  color: var(--color-primary);
-  transition: 0.8s;
+  color: #ffffff;
+  transition: all 0.3s ease;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .MuiCardActions-root > button:active {
   background: var(--color-active);
-  color: var(--color-primary);
-  transition: 0s;
+  color: #ffffff;
+  transition: all 0s;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .MuiCardContent-root:has(.imgCard) {
   padding-bottom: 0px;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container .MuiPaper-root .imgCard {
   width: 100%;
   width: -moz-available;
   width: -webkit-fill-available;
   width: fill-available;
+  border-radius: 8px 8px 0 0;
 }
+
+/* User avatar */
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container div.react-chatbot-kit-user-avatar-container {
   background-color: unset;
   border: 2px solid var(--color-hover);
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container div.react-chatbot-kit-user-avatar-container > svg {
   fill: var(--color-hover);
 }
+
+/* User message bubble */
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container div.react-chatbot-kit-user-chat-message {
   background-color: var(--color-hover);
-  color: var(--color-primary);
+  color: #ffffff;
+  border-radius: 12px 0 12px 12px;
+  font-family: "Montserrat", sans-serif;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-message-container div.react-chatbot-kit-user-chat-message-arrow {
   border-left: 8px solid var(--color-hover);
 }
+
+/* Input bar */
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container {
   height: 50px;
   bottom: unset;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form button {
   background-color: var(--color-secondary);
-  transition: 0.8s;
+  transition: background-color 0.3s ease;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-btn-send {
   background-color: var(--color-message);
-  transition: 0.8s;
+  transition: background-color 0.3s ease;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-btn-send .react-chatbot-kit-chat-btn-send-icon {
   fill: var(--color-message-button);
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-btn-send:hover {
   background-color: var(--color-hover);
-  transition: 0.8s;
+  transition: background-color 0.3s ease;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-btn-send:active {
   background: var(--color-active);
-  transition: 0s;
+  transition: all 0s;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-btn-send:active .react-chatbot-kit-chat-btn-send-icon {
-  fill: var(--color-primary);
+  fill: #ffffff;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-input {
-  border-top: 3px solid var(--color-message);
+  border-top: 2px solid var(--color-message);
   background-color: var(--color-primary);
   color: var(--color-message-text);
   border-radius: unset;
+  font-family: "Montserrat", sans-serif;
+  transition: border-color 0.3s ease;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-input::-moz-placeholder {
   color: var(--color-message-text);
+  opacity: 0.6;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-input::placeholder {
   color: var(--color-message-text);
+  opacity: 0.6;
 }
+
 div.react-chatbot-kit-chat-container .react-chatbot-kit-chat-inner-container .react-chatbot-kit-chat-input-container .react-chatbot-kit-chat-input-form .react-chatbot-kit-chat-input:focus {
   outline: none;
-  border-top: 3px solid var(--color-hover);
-}/*# sourceMappingURL=connect.css.map */
+  border-top: 2px solid var(--color-hover);
+}
