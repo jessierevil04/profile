@@ -83,7 +83,7 @@ export const experiences = {
       subtitle: "Senior Fullstack Developer",
       link: "https://skillko.com/",
       description:
-        "Responsible for maintaining and enhancing the Skillko workforce management platform.",
+        "Responsible for maintaining and enhancing the Safety Compliance and Training Management Platform.",
     },
     {
       date: "Dec 2018 - Jun 2024",
