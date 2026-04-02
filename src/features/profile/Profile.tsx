@@ -10,6 +10,7 @@ import Skills from "./components/Skills";
 import Connect from "./components/connect/Connect";
 import Projects from "./components/Projects";
 import OnlineCertifications from "./components/OnlineCertifications";
+import Testimonials from "./components/Testimonials";
 import ScrollProgressBar from "../../components/common/ScrollProgressBar";
 import PageTransition from "../../components/common/PageTransition";
 import {
@@ -19,6 +20,7 @@ import {
   projects,
   about,
   onlineCertifications,
+  testimonials,
 } from "../../data/config";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
@@ -106,6 +108,14 @@ export default function Profile() {
             element={
               <PageTransition>
                 <Projects details={projects} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/testimonials"
+            element={
+              <PageTransition>
+                <Testimonials details={testimonials} />
               </PageTransition>
             }
           />

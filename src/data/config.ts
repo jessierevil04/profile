@@ -4,6 +4,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import InfoIcon from "@mui/icons-material/Info";
 import BuildIcon from "@mui/icons-material/Build";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { ContentType } from '../features/profile/components/connect/connectSlice'
 
 export const config = {
@@ -16,7 +17,7 @@ export const config = {
       text: "I am Jessie Brian Revil",
     },
     {
-      text: "Web Developer",
+      text: "Fullstack Developer",
     },
     {
       text: "Oracle Certified Professional",
@@ -32,6 +33,11 @@ export const config = {
       text: "Skills",
       path: "/skills",
       icon: LightbulbIcon,
+    },
+    {
+      text: "Endorsements",
+      path: "/testimonials",
+      icon: ThumbUpIcon,
     },
     {
       text: "Online Certificates",
@@ -64,6 +70,7 @@ export const home = {
     "React Developer",
     "Oracle Certified Professional",
   ],
+  currentlyWorkingOn: "HSI Skillko — Safety Compliance and Training Management Platform",
 };
 
 export const experiences = {
@@ -615,13 +622,118 @@ export const onlineCertifications = {
           type: "pdf",
           link: "/profile/pdf/pluralsight/16.pdf"
         },
-        { 
+        {
           title: "Leadership in the Time of COVID-19",
           type: "pdf",
           link: "/profile/pdf/pluralsight/17.pdf"
         },
-
       ],
+    },
+  ],
+};
+
+export const testimonials = {
+  title: "Endorsements",
+  note: "Skill endorsements sourced from LinkedIn · as of April 2026",
+  linkedinUrl: "https://www.linkedin.com/in/jessie-brian-revil/",
+  contents: [
+    {
+      name: "Arden Latraca",
+      role: "Software Developer",
+      linkedin: "https://www.linkedin.com/in/denzanitized93/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQFn_BYjtwUtxA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1732023509724?e=1776902400&v=beta&t=wvjV1ooEeyskTnH8d2P6bA5reI8Qq1fWgfULgRdaBYk",
+      initials: "AL",
+    },
+    {
+      name: "Eduardo Esternon",
+      role: "Senior Software Engineer at Zeald",
+      linkedin: "https://www.linkedin.com/in/eduardo-esternon/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQF6xGXqSRFJ7Q/profile-displayphoto-scale_100_100/B56ZjWqFjkHcAc-/0/1755948022597?e=1776902400&v=beta&t=QvMDZ7onGUrDhoSpm-nZ-bjA6VOI8VALvZ3lRhm82F0",
+      initials: "EE",
+    },
+    {
+      name: "Erwin Robles Jr",
+      role: "iOS Developer",
+      linkedin: "https://www.linkedin.com/in/erwin-robles-jr-820402a6/",
+      photo: "https://media.licdn.com/dms/image/v2/C5603AQEb5zss_0ZgTw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1609269637592?e=1776902400&v=beta&t=zVdEbLYwTaYTk8UTy4TwCMx7PZhUf1OQ6Ahcg484LAY",
+      initials: "ER",
+    },
+    {
+      name: "Hazel Fernandez",
+      role: "Senior Technical Specialist II at Alliance Software Inc.",
+      linkedin: "https://www.linkedin.com/in/hazel-fernandez-07ab0663/",
+      photo: "https://media.licdn.com/dms/image/v2/C5603AQEzhZSHAPkJOw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1517559408045?e=1776902400&v=beta&t=5Lc5l7SdshDZuNBHBk-asJWhm7mnX-uZfJ_lmqgSp-s",
+      initials: "HF",
+    },
+    {
+      name: "Jake Pomperada, PhD.",
+      role: "IT Project Manager & Freelance Software Engineer",
+      linkedin: "https://www.linkedin.com/in/jake-pomperada-phd-aaa2603/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQHLPNIIwzoUzg/profile-displayphoto-shrink_100_100/B56Za5lkiAGUAY-/0/1746870358533?e=1776902400&v=beta&t=lZr7QUYu0P4XBB-j-1WsUoOaQPIO8Fq9-z5cDDkDhiw",
+      initials: "JP",
+    },
+    {
+      name: "Jasper Adlaon",
+      role: "Software Developer",
+      linkedin: "https://www.linkedin.com/in/strawhatjas/",
+      photo: "https://media.licdn.com/dms/image/v2/C5103AQE2hX6ZTd4tMg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1569939875233?e=1776902400&v=beta&t=Pn9PDVabgKBPD9b1lDlKJsPveFxIDxKAcOMT88WD6_8",
+      initials: "JA",
+    },
+    {
+      name: "Kevin Barrosa",
+      role: "Full-Stack Software Engineer",
+      linkedin: "https://www.linkedin.com/in/kmbarrosa/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQEOLMhZJ61wIw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1700202892106?e=1776902400&v=beta&t=MHUAl5J4wkh1JizlZAQasw7N91qqOyEuA8AaMAsvH7A",
+      initials: "KB",
+    },
+    {
+      name: "Kim Honoridez",
+      role: "Principal Solutions Architect at Energy Web",
+      linkedin: "https://www.linkedin.com/in/kim-honoridez-9aa16b46/",
+      photo: "https://media.licdn.com/dms/image/v2/C5603AQH4lltuQjl9BQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1545100717927?e=1776902400&v=beta&t=WgMimFCCLRn0AysDNizF7wcxA4_KsoORB9Qj_9CpeoM",
+      initials: "KH",
+    },
+    {
+      name: "Kiril James Mangubat",
+      role: "Software Engineer at Cognizant Japan K.K",
+      linkedin: "https://www.linkedin.com/in/kiriljamesmangubat/",
+      photo: "https://media.licdn.com/dms/image/v2/C5103AQG8CKOCmHdgBQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1521684008180?e=1776902400&v=beta&t=tynsI_a3-mo72KXAPZGqLW6rsg4t0jTXo2NtLholZig",
+      initials: "KM",
+    },
+    {
+      name: "Lylinette Encorporado",
+      role: "General Virtual Assistant",
+      linkedin: "https://www.linkedin.com/in/lylinette-encorporado-b82480b7/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQHHFrKzIaqr5A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1671612197899?e=1776902400&v=beta&t=GDvSYkS2UN5NjrBgUOgyL6jZiMSLUt7d_bFENR-IlDs",
+      initials: "LE",
+    },
+    {
+      name: "Nathaniel Isaac Tiu Yu",
+      role: "Senior Technical Specialist at Alliance Software Inc.",
+      linkedin: "https://www.linkedin.com/in/nathaniel-isaac-tiu-yu-b7583473/",
+      photo: "https://media.licdn.com/dms/image/v2/C5103AQFezHkgoyy5vg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1531103613229?e=1776902400&v=beta&t=vWGxaYdR6qgCRoe2yh2Pa33CjEgCQ5KrCJcDSXtyn2Q",
+      initials: "NT",
+    },
+    {
+      name: "Severino Lorilla Jr.",
+      role: "Full Stack Developer",
+      linkedin: "https://www.linkedin.com/in/severinolorillajr/",
+      photo: "https://media.licdn.com/dms/image/v2/C4E03AQGhL9b27XcL6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1516832572764?e=1776902400&v=beta&t=OsmZby_QRr6Yf5nDa8niszri4mHqcZLvJR4dC0oh3Nc",
+      initials: "SL",
+    },
+    {
+      name: "Takayuki Iwata",
+      role: "Product Engineer at Stockmark",
+      linkedin: "https://www.linkedin.com/in/takayuki-iwata/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQGaI3PFWOY07w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1729931953090?e=1776902400&v=beta&t=UGYwks01s_WvBCZVyVjfHzwiw3Woclybk7t0wG2lnbk",
+      initials: "TI",
+    },
+    {
+      name: "Vhen Joseph",
+      role: "Lead AI Product Engineer at YTL AI Labs",
+      linkedin: "https://www.linkedin.com/in/vhenjoseph/",
+      photo: "https://media.licdn.com/dms/image/v2/D5603AQEvyZuaD6p4eg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1702562721301?e=1776902400&v=beta&t=QTah2KPK3aMT1M8t1QTYGzV62Cx1lBHqBUygffhFpqE",
+      initials: "VJ",
     },
   ],
 };

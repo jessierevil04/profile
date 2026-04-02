@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+#testimonialsMainContent {
+  color: var(--color-secondary);
+  padding: 0 35px 48px;
+}
+
+/* "Sourced from LinkedIn · as of April 2026" note — displayed as a pill chip */
+#testimonialsMainContent .endorsementNote {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  background-color: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 32px;
+  /* center the chip within the full-width parent */
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#testimonialsMainContent .endorsementNoteIcon {
+  font-size: 0.85rem !important;
+  color: #0a66c2;
+  opacity: 1;
+  flex-shrink: 0;
+}
+
+/* Endorser card — clickable link styled as a centered column */
+#testimonialsMainContent .endorserCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  border: 1.5px solid rgba(99, 102, 241, 0.12);
+  border-radius: 12px;
+  background-color: var(--color-paper);
+  text-decoration: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#testimonialsMainContent .endorserCard:hover {
+  border-color: var(--color-hover);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Avatar circle */
+#testimonialsMainContent .endorserAvatar {
+  width: 72px !important;
+  height: 72px !important;
+  background-color: var(--color-hover) !important;
+  color: #ffffff !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 12px;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  transition: border-color 0.3s ease;
+}
+
+#testimonialsMainContent .endorserCard:hover .endorserAvatar {
+  border-color: var(--color-hover);
+}
+
+/* Name */
+#testimonialsMainContent .endorserName {
+  color: var(--color-secondary);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+#testimonialsMainContent .endorserCard:hover .endorserName {
+  color: var(--color-hover);
+}
+
+/* Role / title */
+#testimonialsMainContent .endorserRole {
+  color: var(--color-secondary);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  opacity: 0.55;
+  line-height: 1.4;
+}
+
+/* Skeleton placeholder alignment */
+#testimonialsMainContent .endorserCardSkeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 12px;
+}

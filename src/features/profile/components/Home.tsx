@@ -87,6 +87,11 @@ const Home: React.FC = () => {
         </Button>
       </div>
 
+      <div id="current-work">
+        <span className="pulse-dot" />
+        Currently building&nbsp;<strong>{home.currentlyWorkingOn}</strong>
+      </div>
+
       <motion.div
         className="cursor"
         variants={variants}
